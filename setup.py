@@ -2,17 +2,17 @@ from setuptools import find_packages,setup
 
 from typing import List
 
-REQUIRMENT_FILE_NAME = "requirements.txt"
+REQUIREMENT_FILE_NAME = "requirements.txt"
 HYPHEN_E_DOT = "-e ."
 
-def get_requirments() -> List[str]:
-    with REQUIRMENT_FILE_NAME as requirment_file:
-        requirment_list = requirment_file.readlines()
-        requirment_list = [requirment_name.replace("\n","") for requirment_name in requirment_list]
+def get_requirements() -> List[str]:
+    with open(REQUIREMENT_FILE_NAME) as requirement_file:
+        requirement_list = requirement_file.readlines()
+        requirement_list = [requirement_name.replace("\n","") for requirement_name in requirement_list]
 
-    if HYPHEN_E_DOT in requirment_list:
-        requirment_list.remove(HYPHEN_E_DOT)
-    return requirment_list
+    if HYPHEN_E_DOT in requirement_list:
+        requirement_list.remove(HYPHEN_E_DOT)
+    return requirement_list
 
 setup(
     name="Sensor",
@@ -20,6 +20,6 @@ setup(
     author= "Kuldipdongare17",
     author_email="kuldipdongare17@gmail.com",
     packages=find_packages(),
-    install_requires = get_requirments(),
+    install_requires = get_requirements(),
 
 )
